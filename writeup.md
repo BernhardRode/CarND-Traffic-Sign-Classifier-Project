@@ -17,9 +17,11 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.png "Visualization"
+[image1]: ./examples/histogram.png "Visualization"
 [image2]: ./examples/colored_signs.png "Grayscaling"
 [image3]: ./examples/normalized.png "Normalized"
+[image4]: ./examples/signs_germany.png "Signs Germany"
+[image5]: ./examples/signs_international.png "Signs International"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -44,7 +46,7 @@ signs data set:
 * The size of training set is ?
 34799
 * The size of the validation set is ?
-TODO
+4410
 * The size of test set is ?
 12630
 * The shape of a traffic sign image is ?
@@ -56,7 +58,7 @@ TODO
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
 
-TODO
+As you can see in the histogram, the data is not very well spread across all classes.
 
 ![Visualization][image1]
 
@@ -118,40 +120,40 @@ Following the lab, I used the AdamOptimizer.
 My Accuracies for the Epochs:
 
 EPOCH 1 ...
-Training Accuracy = 0.648
-Validation Accuracy = 0.618
+Training Accuracy = 0.637
+Validation Accuracy = 0.604
 
 EPOCH 2 ...
-Training Accuracy = 0.878
-Validation Accuracy = 0.791
+Training Accuracy = 0.855
+Validation Accuracy = 0.772
 
 EPOCH 3 ...
-Training Accuracy = 0.942
-Validation Accuracy = 0.872
+Training Accuracy = 0.927
+Validation Accuracy = 0.833
 
 EPOCH 4 ...
-Training Accuracy = 0.962
-Validation Accuracy = 0.885
+Training Accuracy = 0.952
+Validation Accuracy = 0.868
 
 EPOCH 5 ...
-Training Accuracy = 0.974
-Validation Accuracy = 0.917
+Training Accuracy = 0.962
+Validation Accuracy = 0.895
 
 EPOCH 6 ...
-Training Accuracy = 0.977
-Validation Accuracy = 0.910
+Training Accuracy = 0.974
+Validation Accuracy = 0.895
 
 EPOCH 7 ...
-Training Accuracy = 0.985
-Validation Accuracy = 0.920
+Training Accuracy = 0.982
+Validation Accuracy = 0.911
 
 My final model results were:
 * training set accuracy of ?
-0.985
+0.982
 * validation set accuracy of ? 
-0.920
+0.911
 * test set accuracy of ?
-0.904
+0.890
 
 If an iterative approach was chosen:
 
@@ -193,8 +195,8 @@ To be true... I trusted in you ;)
 
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
 
-With 98.5 % accuracy on the training set, this is imho a really good end result.
-The gap between training and validation (92.0%) and test (90.4%) may be a clue, 
+With 98.2 % accuracy on the training set, this is imho a really good end result.
+The gap between training and validation (91.1%) and test (89.0%) may be a clue, 
 that the model is overfitting on the training data a little bit too much.
 
 Up to now I'm still missing the gut feeling to say if this difference is good or bad.
@@ -203,13 +205,65 @@ Up to now I'm still missing the gut feeling to say if this difference is good or
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-TODO
+I've used 5 pictures from germany and 5 international ones (to see, that the network is not generating false positives).
 
-#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+![Signs Germany][image4]
 
-TODO
+* Picture 1 - Has a big reflection on it
+* Picture 2 - is really blurry
+* Picture 3 - has a big dark spot and a bright blue
+* Picture 4 - Has a different font
+* Picture 5 - has a second circle
+
+![Signs International][image5]
+
+* Picture 1 - Chinese signs
+* Picture 2 - Bumpy (with one bump)
+* Picture 3 - American Road Work
+* Picture 4 - American traffic light
+* Picture 5 - american roundabout
+
+#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set.
+
+The result was exactly, what the numbers above imply. On the german sign, the network made one mistake. On the international signs, it recognized the roadwork ahead sign, as it is pretty similar to the german one.
+
+Thought "Ahead only", it should be "Speed limit (60km/h)"
+===> Germany: Images 5 Errors 1 - 20.0% Errors
+Thought "No vehicles", it should be "Stop"
+Thought "Right-of-way at the next intersection", it should be "Road work"
+Thought "Speed limit (30km/h)", it should be "Traffic signals"
+Thought "Stop", it should be "Roundabout mandatory"
+===> International: Images 5 Errors 4 - 80.0% Errors
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-TODO
-
+Wrong: for 11 "Right-of-way at the next intersection" had the following probability distribution
+	11 Right-of-way at the next intersection - 19.6%
+	21 Double curve - 4.4%
+	42 End of no passing by vehicles over 3.5 metric tons - 4.3%
+	30 Beware of ice/snow - 3.0%
+	23 Slippery road - 2.3%
+Wrong: for 28 "Children crossing" had the following probability distribution
+	28 Children crossing - 8.4%
+	29 Bicycles crossing - 6.3%
+	24 Road narrows on the right - 0.6%
+	30 Beware of ice/snow - -0.1%
+	 3 Speed limit (60km/h) - -0.2%
+Wrong: for 38 "Keep right" had the following probability distribution
+	38 Keep right - 16.7%
+	34 Turn left ahead - 7.6%
+	40 Roundabout mandatory - 7.0%
+	36 Go straight or right - 6.6%
+	20 Dangerous curve to the right - 5.1%
+Wrong: for 3 "Speed limit (60km/h)" had the following probability distribution
+	35 Ahead only - 10.1%
+	 3 Speed limit (60km/h) - 7.7%
+	 9 No passing - 3.6%
+	10 No passing for vehicles over 3.5 metric tons - 2.9%
+	23 Slippery road - 2.9%
+Wrong: for 40 "Roundabout mandatory" had the following probability distribution
+	40 Roundabout mandatory - 10.7%
+	11 Right-of-way at the next intersection - 5.5%
+	27 Pedestrians - 0.9%
+	 7 Speed limit (100km/h) - -1.0%
+	18 General caution - -1.9%
