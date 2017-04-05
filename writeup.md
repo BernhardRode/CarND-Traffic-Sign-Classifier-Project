@@ -237,33 +237,33 @@ Thought "Stop", it should be "Roundabout mandatory"
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-Wrong: for 11 "Right-of-way at the next intersection" had the following probability distribution
-	11 Right-of-way at the next intersection - 19.6%
-	21 Double curve - 4.4%
-	42 End of no passing by vehicles over 3.5 metric tons - 4.3%
-	30 Beware of ice/snow - 3.0%
-	23 Slippery road - 2.3%
-Wrong: for 28 "Children crossing" had the following probability distribution
-	28 Children crossing - 8.4%
-	29 Bicycles crossing - 6.3%
-	24 Road narrows on the right - 0.6%
-	30 Beware of ice/snow - -0.1%
-	 3 Speed limit (60km/h) - -0.2%
+Correct: for 11 "Right-of-way at the next intersection" had the following probability distribution
+	11 Right-of-way at the next intersection - 99.92%
+	12 Priority road - 0.07%
+	21 Double curve - 0.01%
+	30 Beware of ice/snow - 0.00%
+	27 Pedestrians - 0.00%
+Correct: for 28 "Children crossing" had the following probability distribution
+	28 Children crossing - 99.95%
+	29 Bicycles crossing - 0.05%
+	20 Dangerous curve to the right - 0.00%
+	24 Road narrows on the right - 0.00%
+	22 Bumpy road - 0.00%
 Wrong: for 38 "Keep right" had the following probability distribution
-	38 Keep right - 16.7%
-	34 Turn left ahead - 7.6%
-	40 Roundabout mandatory - 7.0%
-	36 Go straight or right - 6.6%
-	20 Dangerous curve to the right - 5.1%
+	25 Road work - 43.49%
+	30 Beware of ice/snow - 29.43%
+	23 Slippery road - 23.65%
+	20 Dangerous curve to the right - 1.79%
+	38 Keep right - 1.64%
 Wrong: for 3 "Speed limit (60km/h)" had the following probability distribution
-	35 Ahead only - 10.1%
-	 3 Speed limit (60km/h) - 7.7%
-	 9 No passing - 3.6%
-	10 No passing for vehicles over 3.5 metric tons - 2.9%
-	23 Slippery road - 2.9%
+	35 Ahead only - 72.76%
+	41 End of no passing - 17.75%
+	 3 Speed limit (60km/h) - 3.84%
+	42 End of no passing by vehicles over 3.5 metric tons - 3.60%
+	13 Yield - 1.06%
 Wrong: for 40 "Roundabout mandatory" had the following probability distribution
-	40 Roundabout mandatory - 10.7%
-	11 Right-of-way at the next intersection - 5.5%
-	27 Pedestrians - 0.9%
-	 7 Speed limit (100km/h) - -1.0%
-	18 General caution - -1.9%
+	42 End of no passing by vehicles over 3.5 metric tons - 90.62%
+	40 Roundabout mandatory - 8.55%
+	41 End of no passing - 0.55%
+	 6 End of speed limit (80km/h) - 0.15%
+	11 Right-of-way at the next intersection - 0.10%
