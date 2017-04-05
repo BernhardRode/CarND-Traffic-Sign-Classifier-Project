@@ -108,7 +108,7 @@ from the last lab.
 
 I used these base parameters to train the model:
 
-EPOCHS = 7
+EPOCHS = 10
 BATCH_SIZE = 128
 KEEP_PROB = 0.80
 RATE = 0.001
@@ -120,40 +120,52 @@ Following the lab, I used the AdamOptimizer.
 My Accuracies for the Epochs:
 
 EPOCH 1 ...
-Training Accuracy = 0.637
-Validation Accuracy = 0.604
+Training Accuracy = 0.605
+Validation Accuracy = 0.555
 
 EPOCH 2 ...
-Training Accuracy = 0.855
-Validation Accuracy = 0.772
+Training Accuracy = 0.854
+Validation Accuracy = 0.789
 
 EPOCH 3 ...
-Training Accuracy = 0.927
+Training Accuracy = 0.925
 Validation Accuracy = 0.833
 
 EPOCH 4 ...
-Training Accuracy = 0.952
-Validation Accuracy = 0.868
+Training Accuracy = 0.951
+Validation Accuracy = 0.861
 
 EPOCH 5 ...
-Training Accuracy = 0.962
-Validation Accuracy = 0.895
+Training Accuracy = 0.971
+Validation Accuracy = 0.879
 
 EPOCH 6 ...
-Training Accuracy = 0.974
-Validation Accuracy = 0.895
+Training Accuracy = 0.978
+Validation Accuracy = 0.896
 
 EPOCH 7 ...
-Training Accuracy = 0.982
-Validation Accuracy = 0.911
+Training Accuracy = 0.981
+Validation Accuracy = 0.907
+
+EPOCH 8 ...
+Training Accuracy = 0.985
+Validation Accuracy = 0.909
+
+EPOCH 9 ...
+Training Accuracy = 0.986
+Validation Accuracy = 0.905
+
+EPOCH 10 ...
+Training Accuracy = 0.991
+Validation Accuracy = 0.921
 
 My final model results were:
 * training set accuracy of ?
-0.982
+0.991
 * validation set accuracy of ? 
-0.911
+0.921
 * test set accuracy of ?
-0.890
+0.915
 
 If an iterative approach was chosen:
 
@@ -195,8 +207,8 @@ To be true... I trusted in you ;)
 
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
 
-With 98.2 % accuracy on the training set, this is imho a really good end result.
-The gap between training and validation (91.1%) and test (89.0%) may be a clue, 
+With 99.1 % accuracy on the training set, this is imho a really good end result.
+The gap between training and validation (92.1%) and test (91.5%) may be a clue, 
 that the model is overfitting on the training data a little bit too much.
 
 Up to now I'm still missing the gut feeling to say if this difference is good or bad.
@@ -230,40 +242,41 @@ The result was exactly, what the numbers above imply. On the german sign, the ne
 Thought "Ahead only", it should be "Speed limit (60km/h)"
 ===> Germany: Images 5 Errors 1 - 20.0% Errors
 Thought "No vehicles", it should be "Stop"
+Thought "Traffic signals", it should be "Bumpy road"
 Thought "Right-of-way at the next intersection", it should be "Road work"
-Thought "Speed limit (30km/h)", it should be "Traffic signals"
-Thought "Stop", it should be "Roundabout mandatory"
-===> International: Images 5 Errors 4 - 80.0% Errors
+Thought "Bicycles crossing", it should be "Traffic signals"
+Thought "Yield", it should be "Roundabout mandatory"
+===> International: Images 5 Errors 5 - 100.0% Errors
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 Correct: for 11 "Right-of-way at the next intersection" had the following probability distribution
-	11 Right-of-way at the next intersection - 99.92%
-	12 Priority road - 0.07%
-	21 Double curve - 0.01%
-	30 Beware of ice/snow - 0.00%
+	11 Right-of-way at the next intersection - 100.00%
 	27 Pedestrians - 0.00%
+	30 Beware of ice/snow - 0.00%
+	21 Double curve - 0.00%
+	23 Slippery road - 0.00%
 Correct: for 28 "Children crossing" had the following probability distribution
-	28 Children crossing - 99.95%
-	29 Bicycles crossing - 0.05%
+	28 Children crossing - 91.45%
+	29 Bicycles crossing - 8.28%
+	24 Road narrows on the right - 0.18%
+	 8 Speed limit (120km/h) - 0.07%
+	30 Beware of ice/snow - 0.01%
+Correct: for 38 "Keep right" had the following probability distribution
+	38 Keep right - 100.00%
+	34 Turn left ahead - 0.00%
 	20 Dangerous curve to the right - 0.00%
-	24 Road narrows on the right - 0.00%
-	22 Bumpy road - 0.00%
-Wrong: for 38 "Keep right" had the following probability distribution
-	25 Road work - 43.49%
-	30 Beware of ice/snow - 29.43%
-	23 Slippery road - 23.65%
-	20 Dangerous curve to the right - 1.79%
-	38 Keep right - 1.64%
+	35 Ahead only - 0.00%
+	40 Roundabout mandatory - 0.00%
 Wrong: for 3 "Speed limit (60km/h)" had the following probability distribution
-	35 Ahead only - 72.76%
-	41 End of no passing - 17.75%
-	 3 Speed limit (60km/h) - 3.84%
-	42 End of no passing by vehicles over 3.5 metric tons - 3.60%
-	13 Yield - 1.06%
-Wrong: for 40 "Roundabout mandatory" had the following probability distribution
-	42 End of no passing by vehicles over 3.5 metric tons - 90.62%
-	40 Roundabout mandatory - 8.55%
-	41 End of no passing - 0.55%
-	 6 End of speed limit (80km/h) - 0.15%
-	11 Right-of-way at the next intersection - 0.10%
+	35 Ahead only - 39.26%
+	13 Yield - 35.61%
+	12 Priority road - 15.42%
+	10 No passing for vehicles over 3.5 metric tons - 7.06%
+	 3 Speed limit (60km/h) - 2.10%
+Correct: for 40 "Roundabout mandatory" had the following probability distribution
+	40 Roundabout mandatory - 100.00%
+	20 Dangerous curve to the right - 0.00%
+	11 Right-of-way at the next intersection - 0.00%
+	 7 Speed limit (100km/h) - 0.00%
+	42 End of no passing by vehicles over 3.5 metric tons - 0.00%
